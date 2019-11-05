@@ -8,6 +8,8 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format:all": "prettier --config ./.prettierrc --write \"src/app/**/*{.ts,.js,.json,.html}\"",
+    "format:fix": "pretty-quick --staged",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -60,7 +62,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format:fix && npm run lint"
+      "pre-commit": "npm run format:fix"
     }
   },
   "jest": {
