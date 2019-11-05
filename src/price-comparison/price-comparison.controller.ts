@@ -12,7 +12,6 @@ export class PriceComparisonController {
   @Get('/compare')
   @UsePipes(new ValidationPipe())
   async comparePrices(@Body() data: PriceComparisonDto) {
-    console.log(123, data);
     return this.priceComparisonService.compare(data);
   }
 }
