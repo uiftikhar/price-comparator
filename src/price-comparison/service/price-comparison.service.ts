@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+
 import { PriceComparisonDto } from '../price-comparison.dto';
-import { NUMBER_OF_MONTHS } from '../../shared/constants/number-of-months';
 import { TariffCalculatorService } from '../../tariff-calculator/services';
 import { Tariff } from '../../tariff-calculator/enums';
+import { TariffCalculationResult } from '../../tariff-calculator/interfaces';
 
 @Injectable()
 export class PriceComparisonService {
@@ -10,19 +11,19 @@ export class PriceComparisonService {
     private readonly tariffCalculationService: TariffCalculatorService,
   ) {}
 
-  async compare(consumtionAmount: PriceComparisonDto) {
-    const basicElectricityTarrif = this.tariffCalculationService.basicElectricityTariffCalculation(
-      consumtionAmount.consumption,
+  compare(consumptionAmount: PriceComparisonDto): TariffCalculationResult[] {
+    const basicElectricityTariff = this.tariffCalculationService.basicElectricityTariffCalculation(
+      consumptionAmount.consumption,
     );
 
     const packagedElectricityTariffCalculation = this.tariffCalculationService.packagedElectricityTariffCalculation(
-      consumtionAmount.consumption,
+      consumptionAmount.consumption,
     );
 
     const returnObj = [
       {
         tariffName: Tariff.BASIC,
-        ...basicElectricityTarrif,
+        ...basicElectricityTariff,
       },
       {
         tariffName: Tariff.PACKAGED,

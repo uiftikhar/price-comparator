@@ -36,13 +36,12 @@ export class TariffCalculatorService {
         annualCost: BASE_COST,
       };
     } else {
-      const differenceOfConsumpution =
-        consumptionAmount - CONSUMPTION_THRESHOLD;
+      const differenceOfConsumption = consumptionAmount - CONSUMPTION_THRESHOLD;
       const calculationResult =
-        BASE_COST + differenceOfConsumpution * CONSUMPTION_COST_PER_KWH;
+        BASE_COST + differenceOfConsumption * CONSUMPTION_COST_PER_KWH;
       return {
         baseCosts: BASE_COST,
-        consumptionCosts: differenceOfConsumpution * CONSUMPTION_COST_PER_KWH,
+        consumptionCosts: differenceOfConsumption * CONSUMPTION_COST_PER_KWH,
         annualCost: calculationResult,
       };
     }

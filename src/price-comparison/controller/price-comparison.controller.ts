@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Query, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, UsePipes } from '@nestjs/common';
+
 import { PriceComparisonService } from '../service/price-comparison.service';
 import { ValidationPipe } from '../../shared/pipes/validation.pipe';
 import { PriceComparisonDto } from '../price-comparison.dto';
+import { TariffCalculationResult } from '../../tariff-calculator/interfaces';
 
 @Controller('api/price-comparison')
 export class PriceComparisonController {
@@ -11,7 +13,7 @@ export class PriceComparisonController {
 
   @Get('/compare')
   @UsePipes(new ValidationPipe())
-  async comparePrices(@Body() data: PriceComparisonDto) {
+  comparePrices(@Body() data: PriceComparisonDto): TariffCalculationResult[] {
     return this.priceComparisonService.compare(data);
   }
 }
