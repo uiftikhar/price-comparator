@@ -1,6 +1,7 @@
 {
   "linterOptions": {
-    "exclude": ["**/*.spec.ts"]
+    "exclude": ["**/*.spec.ts"],
+    "exclude": ["**/*.e2e-spec.ts"]
   },
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],

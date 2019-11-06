@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Query, UsePipes } from '@nestjs/common';
-import { PriceComparisonService } from './price-comparison.service';
-import { ValidationPipe } from '../shared/validation.pipe';
-import { PriceComparisonDto } from './price-comparison.dto';
+import { PriceComparisonService } from '../service/price-comparison.service';
+import { ValidationPipe } from '../../shared/pipes/validation.pipe';
+import { PriceComparisonDto } from '../price-comparison.dto';
 
 @Controller('api/price-comparison')
 export class PriceComparisonController {
