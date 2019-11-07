@@ -66,9 +66,7 @@ describe('PriceComparisonService', () => {
 
       jest
         .spyOn(tariffCalculatorService, 'basicElectricityTariffCalculation')
-        .mockImplementation(() => {
-          return basicResult;
-        });
+        .mockImplementation(() => basicResult);
 
       jest
         .spyOn(tariffCalculatorService, 'packagedElectricityTariffCalculation')
